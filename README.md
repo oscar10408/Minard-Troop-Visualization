@@ -25,14 +25,14 @@ This project **faithfully reproduces the original visualization** using Python.
 
 ---
 ## **🔹 Key Steps in Visualization**
-- 1️⃣ Create a Multi-Row Figure (Troop & Temperature Plots)
+- **1️⃣ Create a Multi-Row Figure (Troop & Temperature Plots)**
 ```python
 fig = plt.figure(figsize=(30, 8))
 gs = gridspec.GridSpec(2, 1, height_ratios=[1, 0.3])  # Top plot is larger
 ax1 = plt.subplot(gs[0])  # Troop movement
 ax2 = plt.subplot(gs[1])  # Temperature
 ```
-- 2️⃣ Plot Troop Movements (Attack & Retreat)
+- **2️⃣ Plot Troop Movements (Attack & Retreat)**
 ```python
 for direction, color in zip(['A', 'R'], ['navajowhite', 'black']):
     subset = troops[troops['direction'] == direction]
@@ -44,7 +44,7 @@ for direction, color in zip(['A', 'R'], ['navajowhite', 'black']):
         )
 ```
 
-- 3️⃣ Overlay Temperature Data on a Second Plot
+- **3️⃣ Overlay Temperature Data on a Second Plot**
 ```python
 for direction, color in zip(['A', 'R'], ['navajowhite', 'black']):
     subset = troops[troops['direction'] == direction]
@@ -56,7 +56,7 @@ for direction, color in zip(['A', 'R'], ['navajowhite', 'black']):
         )
 ```
 
-- 4️⃣ Connect Cities to Their Temperature Readings
+- **4️⃣ Connect Cities to Their Temperature Readings**
 ```python
 con = ConnectionPatch(
     xyA=(long, lat), xyB=(long, temp_value),
