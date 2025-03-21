@@ -24,4 +24,45 @@ This project **faithfully reproduces the original visualization** using Python.
 - Overlay temperature data on a secondary plot.
 
 ---
+## **🔹 Key Steps in Visualization**
+- 1️⃣ Create a Multi-Row Figure (Troop & Temperature Plots)
+```python
+fig = plt.figure(figsize=(30, 8))
+gs = gridspec.GridSpec(2, 1, height_ratios=[1, 0.3])  # Top plot is larger
+ax1 = plt.subplot(gs[0])  # Troop movement
+ax2 = plt.subplot(gs[1])  # Temperature
+```
+- 2️⃣ Plot Troop Movements (Attack & Retreat)
+```python
+for direction, color in zip(['A', 'R'], ['navajowhite', 'black']):
+    subset = troops[troops['direction'] == direction]
+    for group_id in subset['group'].unique():
+        group_data = subset[subset['group'] == group_id]
+        ax1.plot(
+            group_data['long'], group_data['lat'], 
+            color=color, linewidth=group_data['survivors'].iloc[0] / 7500, alpha=0.8
+        )
+```
 
+- 3️⃣ Overlay Temperature Data on a Second Plot
+```python
+for direction, color in zip(['A', 'R'], ['navajowhite', 'black']):
+    subset = troops[troops['direction'] == direction]
+    for group_id in subset['group'].unique():
+        group_data = subset[subset['group'] == group_id]
+        ax1.plot(
+            group_data['long'], group_data['lat'], 
+            color=color, linewidth=group_data['survivors'].iloc[0] / 7500, alpha=0.8
+        )
+```
+
+- 4️⃣ Connect Cities to Their Temperature Readings
+```python
+con = ConnectionPatch(
+    xyA=(long, lat), xyB=(long, temp_value),
+    coordsA="data", coordsB="data",
+    axesA=ax1, axesB=ax2,
+    color="black", linestyle="-", alpha=0.5
+)
+ax2.add_artist(con)
+```
