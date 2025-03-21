@@ -2,6 +2,10 @@
 
 This project **recreates Charles Minard’s famous 1869 visualization** of Napoleon’s **1812 Russian campaign**, depicting troop movements, losses, and temperature variations.
 
+## **🖼️ Sample Visualization**
+<p align="center"> <img src="Minard_Visualization.png" width="80%"> </p>
+
+--- 
 ## **📊 Overview**
 Minard’s visualization is a **masterpiece of data storytelling**, illustrating:
 - **Troop movement** from France to Russia (**width represents troop size**).
@@ -21,5 +25,3 @@ This project **faithfully reproduces the original visualization** using Python.
 
 ---
 
-## **🖼️ Sample Visualization**
-<p align="center"> <img src="Minard_Visualization.png" width="80%"> </p>
